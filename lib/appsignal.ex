@@ -80,6 +80,8 @@ defmodule Appsignal do
       :ok = Appsignal.Nif.stop()
       :ok = initialize()
     end)
+
+    :ok
   end
 
   @doc false
