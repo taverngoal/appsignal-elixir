@@ -12,6 +12,7 @@ fi
 if [ -z "$TRAVIS_ELIXIR_VERSION" ] || [ $(version $TRAVIS_ELIXIR_VERSION) -ge $(version "1.10.0") ]; then
   MIX_ENV=test mix format --dry-run --check-formatted
   MIX_ENV=test mix credo --strict
+  MIX_ENV=test mix dialyzer --halt-exit-status
 fi
 
 MIX_ENV=test mix test
