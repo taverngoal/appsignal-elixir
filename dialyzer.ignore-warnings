@@ -1,0 +1,4 @@
+lib/mix/tasks/appsignal.diagnose.ex:235: Function print_agent_diagnostics/1 will never be called
+lib/mix/tasks/appsignal.diagnose.ex:58: The pattern {'error', _raw_report@1} can never match since previous clauses completely covered the type {'error','nif_not_loaded'}
+lib/mix/tasks/appsignal.diagnose.ex:49: The pattern {'ok', _agent_report@1} can never match the type {'error','nif_not_loaded'}
+lib/appsignal/diagnose/agent.ex:10: The call 'Elixir.Appsignal.Json':decode(_report_string@1::'error') will never return since it differs in the 1st argument from the success typing arguments: (binary() | maybe_improper_list(binary() | maybe_improper_list(any(),binary() | []) | byte(),binary() | []))
