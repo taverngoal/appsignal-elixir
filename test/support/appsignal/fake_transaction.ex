@@ -104,6 +104,8 @@ defmodule Appsignal.FakeTransaction do
 
   def set_action(action) do
     Agent.update(__MODULE__, &Map.put(&1, :action, action))
+
+    Appsignal.TransactionRegistry.lookup(self())
   end
 
   def finish, do: self() |> Appsignal.TransactionRegistry.lookup() |> finish
