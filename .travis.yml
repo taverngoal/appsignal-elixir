@@ -3,6 +3,9 @@ branches:
   - master
   - develop
   - elixir-ci-versions
+cache:
+  directories:
+  - priv/plts
 language: elixir
 elixir:
   - 1.10.0
