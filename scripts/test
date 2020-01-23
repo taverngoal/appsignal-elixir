@@ -5,14 +5,11 @@ version() {
   echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }';
 }
 
-if [ -z "$TRAVIS_ELIXIR_VERSION" ] || [ $(version $TRAVIS_ELIXIR_VERSION) -ge $(version "1.5.0") ]; then
-  MIX_ENV=test mix compile --warnings-as-errors
-fi
-
 if [ -z "$TRAVIS_ELIXIR_VERSION" ] || [ $(version $TRAVIS_ELIXIR_VERSION) -ge $(version "1.10.0") ]; then
-  MIX_ENV=test mix format --dry-run --check-formatted
-  MIX_ENV=test mix credo --strict
-  mkdir -p priv/plts && MIX_ENV=dev mix dialyzer --halt-exit-status
+  mix compile --warnings-as-errors
+  mix format --dry-run --check-formatted
+  mix credo --strict
+  mkdir -p priv/plts && mix dialyzer --halt-exit-status
 fi
 
 MIX_ENV=test mix test
