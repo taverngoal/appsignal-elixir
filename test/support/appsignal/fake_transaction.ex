@@ -57,6 +57,8 @@ defmodule Appsignal.FakeTransaction do
 
       new_state
     end)
+
+    transaction
   end
 
   def record_event(name, title, body, duration, body_format) do
