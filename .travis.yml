@@ -3,6 +3,7 @@ branches:
   - master
   - develop
   - elixir-ci-versions
+  - dialyzer
 cache:
   directories:
   - priv/plts
