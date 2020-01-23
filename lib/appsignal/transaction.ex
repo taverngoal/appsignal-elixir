@@ -127,7 +127,7 @@ defmodule Appsignal.Transaction do
   @doc """
   Finish an event for the current transaction. See `finish_event/5`.
   """
-  @spec finish_event(String.t(), String.t(), String.t(), integer) :: Transaction.t() | nil
+  @spec finish_event(String.t(), String.t(), any(), integer) :: Transaction.t() | nil
   def finish_event(name, title, body, body_format \\ 0) do
     finish_event(lookup(), name, title, body, body_format)
   end
