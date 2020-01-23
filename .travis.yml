@@ -5,11 +5,11 @@ branches:
   - elixir-ci-versions
 language: elixir
 elixir:
-  - 1.6.6
-  - 1.7.4
-  - 1.8.2
-  - 1.9.4
   - 1.10.0
+  - 1.9.4
+  - 1.8.2
+  - 1.7.4
+  - 1.6.6
 otp_release:
   - 22.2
   - 21.3
