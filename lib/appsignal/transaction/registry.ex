@@ -34,7 +34,7 @@ defmodule Appsignal.TransactionRegistry do
   @doc """
   Given a process ID, return its associated transaction.
   """
-  @spec lookup(pid) :: Transaction.t() | nil
+  @spec lookup(pid) :: Transaction.t() | :ignored | nil
   def lookup(pid) do
     case Config.active?() && receiver_alive?() && ETS.lookup(pid) do
       [{^pid, %Transaction{} = transaction, _}] -> transaction
