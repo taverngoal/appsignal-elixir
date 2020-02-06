@@ -15,7 +15,7 @@ defmodule Appsignal.TracerTest do
     end
 
     test "creates a root span through the Nif" do
-      assert [{"root"}] = WrappedNif.get(:create_root_span)
+      assert {:ok, [{"root"}]} = WrappedNif.get(:create_root_span)
     end
 
     test "sets the span's reference", %{span: span} do
@@ -35,7 +35,8 @@ defmodule Appsignal.TracerTest do
     end
 
     test "creates a child span through the Nif", %{parent: parent} do
-      assert [{"child", parent_trace_id, parent_span_id}] = WrappedNif.get(:create_child_span)
+      assert {:ok, [{"child", parent_trace_id, parent_span_id}]} =
+               WrappedNif.get(:create_child_span)
 
       assert {:ok, ^parent_trace_id} = Span.trace_id(parent)
       assert {:ok, ^parent_span_id} = Span.span_id(parent)
@@ -60,7 +61,7 @@ defmodule Appsignal.TracerTest do
     end
 
     test "creates a root span through the Nif" do
-      assert [{"orphan"}] = WrappedNif.get(:create_root_span)
+      assert {:ok, [{"orphan"}]} = WrappedNif.get(:create_root_span)
     end
 
     test "sets the span's reference", %{span: span} do
@@ -80,7 +81,7 @@ defmodule Appsignal.TracerTest do
     end
 
     test "creates a root span through the Nif" do
-      assert [{"root"}] = WrappedNif.get(:create_root_span)
+      assert {:ok, [{"root"}]} = WrappedNif.get(:create_root_span)
     end
 
     test "sets the span's reference", %{span: span} do
@@ -140,7 +141,7 @@ defmodule Appsignal.TracerTest do
 
     test "closes the span through the Nif", %{span: %Span{reference: reference} = span} do
       Tracer.close_span(span)
-      assert [{^reference}] = WrappedNif.get(:close_span)
+      assert {:ok, [{^reference}]} = WrappedNif.get(:close_span)
     end
   end
 
